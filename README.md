@@ -1,4 +1,5 @@
 # Application form
+[![backend](https://github.com/sir-go/rabota-ttnet/actions/workflows/go.yml/badge.svg)](https://github.com/sir-go/rabota-ttnet/actions/workflows/go.yml)
 
 > https://rabota.ttnet.ru
 
