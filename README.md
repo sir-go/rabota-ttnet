@@ -23,5 +23,5 @@ The frontend container is based on the `nginx` server and has mounted
 docker compose up -d
 ```
 
-## Screecast
+## Screencast
 ![](sc.gif)

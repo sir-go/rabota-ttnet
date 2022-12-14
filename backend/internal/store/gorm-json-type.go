@@ -1,4 +1,4 @@
-package main
+package store
 
 import (
 	"bytes"
@@ -8,11 +8,11 @@ import (
 
 type JSON []byte
 
-func (j JSON) Value() (driver.Value, error) {
+func (j *JSON) Value() (driver.Value, error) {
 	if j.IsNull() {
 		return nil, nil
 	}
-	return string(j), nil
+	return string(*j), nil
 }
 
 func (j *JSON) Scan(value interface{}) error {
@@ -28,11 +28,11 @@ func (j *JSON) Scan(value interface{}) error {
 	return nil
 }
 
-func (j JSON) MarshalJSON() ([]byte, error) {
+func (j *JSON) MarshalJSON() ([]byte, error) {
 	if j == nil {
 		return []byte("null"), nil
 	}
-	return j, nil
+	return *j, nil
 }
 
 func (j *JSON) UnmarshalJSON(data []byte) error {
@@ -43,10 +43,10 @@ func (j *JSON) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (j JSON) IsNull() bool {
-	return len(j) == 0 || string(j) == "null"
+func (j *JSON) IsNull() bool {
+	return len(*j) == 0 || string(*j) == "null"
 }
 
-func (j JSON) Equals(j1 JSON) bool {
-	return bytes.Equal(j, j1)
+func (j *JSON) Equals(j1 JSON) bool {
+	return bytes.Equal(*j, j1)
 }
