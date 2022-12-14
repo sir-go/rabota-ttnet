@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"io/ioutil"
 	"path/filepath"
 
@@ -13,7 +14,6 @@ import (
 type Config struct {
 	Service server.Config `toml:"service"`
 	Db      store.Config  `toml:"db"`
-	Path    string
 }
 
 func unmarshal(b []byte) (cfg *Config, err error) {
@@ -21,6 +21,9 @@ func unmarshal(b []byte) (cfg *Config, err error) {
 		return
 	}
 	cfg = new(Config)
+	if b == nil {
+		return nil, errors.New("config data is empty")
+	}
 	err = toml.Unmarshal(b, cfg)
 	return
 }

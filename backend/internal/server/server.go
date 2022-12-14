@@ -11,6 +11,9 @@ import (
 	"main/internal/store"
 )
 
+// Server has one REST endpoint /api/v1/profile,
+// POST request pushes a JSON data to the table work.profile
+
 func Run(srvConfig Config, dbConfig store.Config) (*http.Server, error) {
 	gin.SetMode(srvConfig.RunMode)
 	r := gin.New()
