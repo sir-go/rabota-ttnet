@@ -13,7 +13,7 @@ import (
 )
 
 func NewID(dbc *gorm.DB, tries int, idLen int) (id string, err error) {
-	rnd := rand.New(rand.NewSource(time.Now().Unix()))
+	rnd := rand.New(rand.NewSource(time.Now().Unix())) //#nosec
 	for t := tries; t > 0; t-- {
 		p, err := password.Generate(idLen, rnd.Intn(idLen-3)+1, 0, false, true)
 		if err != nil {
