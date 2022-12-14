@@ -3,8 +3,8 @@ name: backend
 on:
   push:
     branches: [ "*" ]
-    paths:
-      - backend/**
+#    paths:
+#      - backend/**
   pull_request:
     branches: [ "main" ]
 
@@ -20,7 +20,7 @@ jobs:
       - name: Test
         working-directory: ./backend
         run: go test -v ./...
-#
+
 #  go_sec:
 #    runs-on: ubuntu-latest
 #    steps:
