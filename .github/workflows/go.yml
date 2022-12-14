@@ -31,7 +31,7 @@ jobs:
         env:
           GO111MODULE: on
         with:
-          args: ./...
+          args: ./backend/...
 
   build:
     runs-on: ubuntu-latest
