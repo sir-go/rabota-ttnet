@@ -29,7 +29,8 @@ jobs:
       - name: Run Gosec Security Scanner
         uses: securego/gosec@master
         with:
-          args: ./backend/...
+          working-directory: ./backend
+          args: ./...
 
   build:
     runs-on: ubuntu-latest
