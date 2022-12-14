@@ -1,4 +1,4 @@
-package main
+package store
 
 import (
 	"net/http"
@@ -15,12 +15,24 @@ type Profile struct {
 	Profile    JSON       `json:"profile" gorm:"type:json"`
 }
 
-func (s *Server) Add(c *gin.Context) {
+func AddProfile(c *gin.Context) {
 	var r Profile
-	DBC.EnsureConn()
-	eh(c.BindJSON(&r.Profile))
-	r.ID = NewID()
-	if dbEhDub(DBC.C.Create(r).Error) {
+
+	dbConfig, _ := c.Get("dbConfig")
+	cfg := dbConfig.(Config)
+	dbc, err := Connect(cfg)
+	if err != nil {
+		panic(err)
+	}
+
+	if err = c.ShouldBindJSON(&r.Profile); err != nil {
+		panic(err)
+	}
+	if r.ID, err = NewID(dbc, cfg.IdTries, cfg.IdLen); err != nil {
+		panic(err)
+	}
+
+	if err = dbc.Create(r).Error; err != nil {
 		c.AbortWithStatus(http.StatusConflict)
 		return
 	}

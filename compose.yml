@@ -13,6 +13,8 @@ services:
       interval: 10s
       timeout: 20s
       retries: 10
+#    ports:
+#      - '3306:3306'
     expose:
       - '3306'
     volumes:
@@ -24,6 +26,8 @@ services:
       context: ./backend
     container_name: rabota-backend
     networks: {net}
+    volumes:
+      - ./backend/config.toml:/opt/config.toml:ro
     depends_on:
       mysql:
         condition: service_healthy
