@@ -5,7 +5,7 @@ import (
 
 	zlog "github.com/rs/zerolog/log"
 
-	"main/internal/server"
+	"rabota_ttnet/backend/internal/server"
 )
 
 func eh(err error, msg string) {

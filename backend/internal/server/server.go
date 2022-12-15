@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	zlog "github.com/rs/zerolog/log"
 
-	"main/internal/store"
+	"rabota_ttnet/backend/internal/store"
 )
 
 // Server has one REST endpoint /api/v1/profile,

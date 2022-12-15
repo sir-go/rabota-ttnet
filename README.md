@@ -14,7 +14,7 @@ The collection of some extended information is an optional side effect.
 
 ## Configure
 The backend has a mounted to docker container config file
-`./frontend/config.toml`
+`./backend/config.toml`
 
 The frontend container is based on the `nginx` server and has mounted 
 `./frontend/nginx.conf`

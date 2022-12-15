@@ -1,4 +1,4 @@
-module main
+module rabota_ttnet
 
 go 1.18
 
