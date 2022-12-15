@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"main/internal/server"
-	"main/internal/store"
+	"rabota_ttnet/backend/internal/server"
+	"rabota_ttnet/backend/internal/store"
 )
 
 func Test_unmarshal(t *testing.T) {

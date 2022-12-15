@@ -7,8 +7,8 @@ import (
 
 	"github.com/BurntSushi/toml"
 
-	"main/internal/server"
-	"main/internal/store"
+	"rabota_ttnet/backend/internal/server"
+	"rabota_ttnet/backend/internal/store"
 )
 
 type Config struct {
